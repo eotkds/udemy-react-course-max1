@@ -1,5 +1,7 @@
-import Post from './components/Post'
+
 import './App.css'
+import PostsList from './components/PostsList'
+
 
 function App() {
   {/* 
@@ -8,8 +10,7 @@ function App() {
     */}
   return (
       <>
-      <Post author="Parker" body="Hello!" />
-      <Post author="Maximilian" body="Hello!!" />
+        <PostsList />
       </>
   )
 }

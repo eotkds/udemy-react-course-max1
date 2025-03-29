@@ -8,10 +8,8 @@ function App() {
     */}
   return (
       <>
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      <Post author="Parker" body="Hello!" />
+      <Post author="Maximilian" body="Hello!!" />
       </>
   )
 }

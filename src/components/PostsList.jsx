@@ -5,7 +5,7 @@ import Modal from './Modal';
 import classes from './PostsList.module.css';
 
 
-export default function PostsList() {
+export default function PostsList({isPosting, onStopPosting}) {
 
     /*
         250330  왜 NewPost 안에서 useState를 선언하지 않았을까?
@@ -13,6 +13,8 @@ export default function PostsList() {
     */
     const [enteredBody, setEnteredBody] = useState('');
     const [enteredAuthor, setEnteredAuthor] = useState('');
+
+
     function changeBodyHandler(event) {
       setEnteredBody(event.target.value);
     }
@@ -22,9 +24,11 @@ export default function PostsList() {
       }
     return (
         <>
-            <Modal>
+            {isPosting && (
+            <Modal onClose={onStopPosting}>
                 <NewPost onBodyChange={changeBodyHandler} onAuthorChange={changeAuthorHandler} />
             </Modal>
+            )}
             <ul className={classes.posts}>
                 <Post author={enteredAuthor} body={enteredBody} />
                 <Post author="Max" body="Learning React is fun!" />

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Post from './Post';
 import NewPost from './NewPost';
 import Modal from './Modal';
@@ -8,7 +8,23 @@ import classes from './PostsList.module.css';
 export default function PostsList({isPosting, onStopPosting}) {
     const [posts, setPosts] = useState([]);
 
+    useEffect(() => {
+        async function fetchPosts() {
+            const response = await fetch('http://localhost:8080/posts');
+            const data = await response.json();
+            setPosts(data.posts);
+        }
+        fetchPosts();
+    }, []);
+
     function addPostHandler(postData) {
+        fetch('http://localhost:8080/posts', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(postData)
+        })
         /*
             250331 callback 함수를 사용하는 이유
             - 상태 업데이트가 비동기적으로 일어나기 때문에, 이전 상태를 참조할 수 있도록 해준다.

@@ -5,9 +5,10 @@ import {
   RouterProvider,
 } from "react-router";
 
-import App from './App.jsx'
-import NewPost from './components/NewPost.jsx';
+
+import NewPost from './routes/NewPost.jsx';
 import RootLayout from './routes/RootLayout.jsx';
+import Posts from './routes/Posts.jsx';
 
 import './index.css'
 
@@ -18,12 +19,15 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        Component: App,
+        Component: Posts,
+        children: [
+          {
+            path: "/create-post",
+            Component: NewPost,
+          }
+        ],
       },
-      {
-        path: "/create-post",
-        Component: NewPost,
-      }
+
     ]
   },
 ]);

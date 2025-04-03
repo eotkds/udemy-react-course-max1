@@ -8,7 +8,7 @@ import {
 
 import NewPost from './routes/NewPost.jsx';
 import RootLayout from './routes/RootLayout.jsx';
-import Posts from './routes/Posts.jsx';
+import Posts, { postsLoader } from './routes/Posts.jsx';
 
 import './index.css'
 
@@ -19,6 +19,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
+        loader: postsLoader,
         Component: Posts,
         children: [
           {

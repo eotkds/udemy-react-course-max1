@@ -6,7 +6,7 @@ import {
 } from "react-router";
 
 
-import NewPost from './routes/NewPost.jsx';
+import NewPost, { newPostAction } from './routes/NewPost.jsx';
 import RootLayout from './routes/RootLayout.jsx';
 import Posts, { postsLoader } from './routes/Posts.jsx';
 
@@ -25,6 +25,7 @@ const router = createBrowserRouter([
           {
             path: "/create-post",
             Component: NewPost,
+            action: newPostAction
           }
         ],
       },
